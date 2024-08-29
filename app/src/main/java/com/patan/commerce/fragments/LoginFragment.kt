@@ -17,8 +17,16 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             val userName = binding.userName.text?.toString()
             val password = binding.password.text.toString()
             viewModel.login(userName, password)
+            viewModel.userInfos.observe(viewLifecycleOwner){
+                println(it)
+            }
+            viewModel.token.observe(viewLifecycleOwner){
+                println(it)
+            }
+            viewModel.responseNotifications.observe(viewLifecycleOwner){
+                println(it)
+            }
         }
-        viewModel.token.observe(viewLifecycleOwner) { it -> println(it) }
         binding.registerButton.setOnClickListener {
             val action = LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
             findNavController().navigate(action)

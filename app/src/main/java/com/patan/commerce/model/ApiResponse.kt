@@ -3,7 +3,7 @@ package com.patan.commerce.model
 
 import com.google.gson.annotations.SerializedName
 
-data class LoginResponse(
+data class ApiResponse(
     @SerializedName("Data")
     val `data`: Data?,
     @SerializedName("Message")
