@@ -1,4 +1,4 @@
-package com.patan.commerce.ui
+package com.patan.commerce.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

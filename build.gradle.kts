@@ -5,4 +5,5 @@ plugins {
 
     //Nav
     id("androidx.navigation.safeargs.kotlin") version "2.5.3" apply false
+    id("com.google.dagger.hilt.android") version "2.48" apply false
 }
