@@ -6,4 +6,7 @@
     <string name="home">Home</string>
     <string name="favourite">favourite</string>
     <string name="basket">basket</string>
+    <string name="kullanici_girisi">Kullanıcı girişi başarılı</string>
+    <string name="giris_basarili">Giriş başarılı</string>
+    <string name="kayit_basarili">Kayıt başarılı.</string>
 </resources>

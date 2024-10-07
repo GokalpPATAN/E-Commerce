@@ -3,12 +3,12 @@ package com.patan.commerce.viewmodels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.patan.commerce.model.ApiResponse
+import com.patan.commerce.model.Cities
 import com.patan.commerce.model.ConfirmRequest
-import com.patan.commerce.model.Data
 import com.patan.commerce.model.LoginRequest
 import com.patan.commerce.model.ReConfirmRequest
 import com.patan.commerce.model.RegisterRequest
+import com.patan.commerce.model.User
 import com.patan.commerce.network.ApiService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -16,10 +16,15 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val apiService: ApiService) : ViewModel() {
-    val userInfos: MutableLiveData<Data?> = MutableLiveData()
-    val responseNotifications: MutableLiveData<ApiResponse> = MutableLiveData()
-    val errorMessage: MutableLiveData<String?> = MutableLiveData()
+    private val userInfos: MutableLiveData<User?> = MutableLiveData()
+    private val responseNotifications: MutableLiveData<Any?> = MutableLiveData()
+    val notifications get() = responseNotifications
+    private val isSuccess: MutableLiveData<Boolean?> = MutableLiveData()
+    val success get() = isSuccess
+    private val errorMessage: MutableLiveData<String?> = MutableLiveData()
     val token: MutableLiveData<String?> = MutableLiveData()
+    private val cities: MutableLiveData<List<Cities?>?> = MutableLiveData()
+    val _cities get() = cities
 
     fun login(userName: String?, password: String?) {
         val user = LoginRequest(userName, password)
@@ -28,12 +33,14 @@ class LoginViewModel @Inject constructor(private val apiService: ApiService) : V
                 val response = apiService.userLogin(user)
                 if (response.isSuccessful) {
                     token.postValue(response.body()?.data?.token)
-                    responseNotifications.postValue(response.body())
+                    responseNotifications.postValue(response.body()?.message)
+                    isSuccess.postValue(response.body()?.ısSuccess)
                     userInfos.postValue(response.body()?.data)
                 } else {
                     errorMessage.value =
                         response.message().takeIf { it.isNotEmpty() } ?: "An unknown error occurred"
                 }
+
             } catch (e: Exception) {
                 errorMessage.value = e.message
             }
@@ -57,8 +64,9 @@ class LoginViewModel @Inject constructor(private val apiService: ApiService) : V
             try {
                 val response = apiService.userRegister(registerUser)
                 if (response.isSuccessful) {
-                    responseNotifications.postValue(response.body())
                     userInfos.postValue(response.body()?.data)
+                    responseNotifications.postValue(response.body()?.message)
+                    isSuccess.postValue(response.body()?.ısSuccess)
                 } else {
                     errorMessage.value =
                         response.message().takeIf { it.isNotEmpty() } ?: "An unknown error occurred"
@@ -77,6 +85,8 @@ class LoginViewModel @Inject constructor(private val apiService: ApiService) : V
                 val response = apiService.userConfirm(confirmUser)
                 if (response.isSuccessful) {
                     token.postValue(response.body()?.data?.token)
+                    responseNotifications.postValue(response.body()?.message)
+                    isSuccess.postValue(response.body()?.ısSuccess)
                 } else {
                     errorMessage.value =
                         response.message().takeIf { it.isNotEmpty() } ?: "An unknown error occurred"
@@ -95,6 +105,8 @@ class LoginViewModel @Inject constructor(private val apiService: ApiService) : V
                 val response = apiService.userReConfirm(reConfirmUser)
                 if (response.isSuccessful) {
                     token.postValue(response.body()?.data?.token)
+                    responseNotifications.postValue(response.body()?.message)
+                    isSuccess.postValue(response.body()?.ısSuccess)
                 } else {
                     errorMessage.value =
                         response.message().takeIf { it.isNotEmpty() } ?: "An unknown error occurred"
@@ -104,5 +116,24 @@ class LoginViewModel @Inject constructor(private val apiService: ApiService) : V
             }
         }
 
+    }
+
+    fun getCities(token: String?) {
+        viewModelScope.launch {
+            try {
+                val response = apiService.getCities(token = token)
+                if (response.isSuccessful) {
+                    cities.postValue(response.body()?.data)
+                    responseNotifications.postValue(response.body()?.message)
+                    isSuccess.postValue(response.body()?.ısSuccess)
+                } else {
+                    errorMessage.value =
+                        response.message().takeIf { it.isNotEmpty() } ?: "An unknown error occurred"
+                }
+
+            } catch (e: Exception) {
+                errorMessage.value = e.message
+            }
+        }
     }
 }
