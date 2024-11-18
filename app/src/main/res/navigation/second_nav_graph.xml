@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/second_nav_graph"
+    app:startDestination="@id/productsFragment">
+
+    <fragment
+        android:id="@+id/editUserFragment"
+        android:name="com.patan.commerce.fragments.user.EditUserFragment"
+        android:label="fragment_edit_user"
+        tools:layout="@layout/fragment_edit_user" />
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.patan.commerce.fragments.user.UserFragment"
+        android:label="fragment_user"
+        tools:layout="@layout/fragment_user" >
+        <action
+            android:id="@+id/action_userFragment_to_editUserFragment"
+            app:destination="@id/editUserFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_addAddressFragment"
+            app:destination="@id/addAddressFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_editAddressFragment"
+            app:destination="@id/editAddressFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/basketFragment2"
+        android:name="com.patan.commerce.fragments.user.BasketFragment"
+        android:label="fragment_basket"
+        tools:layout="@layout/fragment_basket" />
+    <fragment
+        android:id="@+id/favouriteFragment2"
+        android:name="com.patan.commerce.fragments.user.FavouriteFragment"
+        android:label="fragment_favourite"
+        tools:layout="@layout/fragment_favourite" />
+    <fragment
+        android:id="@+id/productsFragment"
+        android:name="com.patan.commerce.fragments.products.ProductsFragment"
+        android:label="fragment_products"
+        tools:layout="@layout/fragment_products" >
+        <action
+            android:id="@+id/action_productsFragment_to_productDetailFragment2"
+            app:destination="@id/productDetailFragment2" />
+        <action
+            android:id="@+id/action_productsFragment_to_categoriesFragment"
+            app:destination="@id/categoriesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailFragment2"
+        android:name="com.patan.commerce.fragments.products.ProductDetailFragment"
+        android:label="fragment_product_detail"
+        tools:layout="@layout/fragment_product_detail" >
+        <argument
+            android:name="productId"
+            app:argType="integer" />
+        <argument
+            android:name="productScore"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.patan.commerce.fragments.products.CategoriesFragment"
+        android:label="fragment_categories"
+        tools:layout="@layout/fragment_categories" >
+        <argument
+            android:name="topCategoryId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/addAddressFragment"
+        android:name="com.patan.commerce.fragments.user.AddAddressFragment"
+        android:label="fragment_add_adress"
+        tools:layout="@layout/fragment_add_adress" />
+    <fragment
+        android:id="@+id/editAddressFragment"
+        android:name="com.patan.commerce.fragments.user.EditAddressFragment"
+        android:label="fragment_edit_adress"
+        tools:layout="@layout/fragment_edit_adress" />
+</navigation>

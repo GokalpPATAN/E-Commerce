@@ -1,25 +1,25 @@
 package com.patan.commerce.viewmodels
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.patan.commerce.model.ApiResponse
 import com.patan.commerce.model.ConfirmRequest
-import com.patan.commerce.model.Data
 import com.patan.commerce.model.LoginRequest
 import com.patan.commerce.model.ReConfirmRequest
 import com.patan.commerce.model.RegisterRequest
+import com.patan.commerce.model.User
 import com.patan.commerce.network.ApiService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val apiService: ApiService) : ViewModel() {
-    val userInfos: MutableLiveData<Data?> = MutableLiveData()
-    val responseNotifications: MutableLiveData<ApiResponse> = MutableLiveData()
-    val errorMessage: MutableLiveData<String?> = MutableLiveData()
+class LoginViewModel @Inject constructor(private val apiService: ApiService) :
+    BaseViewModel() {
+
+    private val userInfos: MutableLiveData<User?> = MutableLiveData()
     val token: MutableLiveData<String?> = MutableLiveData()
+    val userId: MutableLiveData<String?> = MutableLiveData()
+
 
     fun login(userName: String?, password: String?) {
         val user = LoginRequest(userName, password)
@@ -28,14 +28,14 @@ class LoginViewModel @Inject constructor(private val apiService: ApiService) : V
                 val response = apiService.userLogin(user)
                 if (response.isSuccessful) {
                     token.postValue(response.body()?.data?.token)
-                    responseNotifications.postValue(response.body())
+                    userId.postValue(response.body()?.data?.userId)
+                    handleSuccess(response.body()?.message, response.body()?.ısSuccess)
                     userInfos.postValue(response.body()?.data)
                 } else {
-                    errorMessage.value =
-                        response.message().takeIf { it.isNotEmpty() } ?: "An unknown error occurred"
+                    handleResponseError(response.message())
                 }
             } catch (e: Exception) {
-                errorMessage.value = e.message
+                handleError(e.message)
             }
         }
     }
@@ -57,18 +57,16 @@ class LoginViewModel @Inject constructor(private val apiService: ApiService) : V
             try {
                 val response = apiService.userRegister(registerUser)
                 if (response.isSuccessful) {
-                    responseNotifications.postValue(response.body())
+                    handleSuccess(response.body()?.message, response.body()?.ısSuccess)
                     userInfos.postValue(response.body()?.data)
                 } else {
-                    errorMessage.value =
-                        response.message().takeIf { it.isNotEmpty() } ?: "An unknown error occurred"
+                    handleResponseError(response.message())
                 }
             } catch (e: Exception) {
-                errorMessage.value = e.message
+                handleError(e.message)
             }
         }
     }
-
 
     fun confirmEmail(approvedCode: Int?, confirmToken: String?, userName: String?) {
         val confirmUser = ConfirmRequest(approvedCode, confirmToken, userName)
@@ -77,14 +75,13 @@ class LoginViewModel @Inject constructor(private val apiService: ApiService) : V
                 val response = apiService.userConfirm(confirmUser)
                 if (response.isSuccessful) {
                     token.postValue(response.body()?.data?.token)
+                    handleSuccess(response.body()?.message, response.body()?.ısSuccess)
                 } else {
-                    errorMessage.value =
-                        response.message().takeIf { it.isNotEmpty() } ?: "An unknown error occurred"
+                    handleResponseError(response.message())
                 }
             } catch (e: Exception) {
-                errorMessage.value = e.message
+                handleError(e.message)
             }
-            return@launch
         }
     }
 
@@ -95,14 +92,13 @@ class LoginViewModel @Inject constructor(private val apiService: ApiService) : V
                 val response = apiService.userReConfirm(reConfirmUser)
                 if (response.isSuccessful) {
                     token.postValue(response.body()?.data?.token)
+                    handleSuccess(response.body()?.message, response.body()?.ısSuccess)
                 } else {
-                    errorMessage.value =
-                        response.message().takeIf { it.isNotEmpty() } ?: "An unknown error occurred"
+                    handleResponseError(response.message())
                 }
             } catch (e: Exception) {
-                errorMessage.value = e.message
+                handleError(e.message)
             }
         }
-
     }
 }

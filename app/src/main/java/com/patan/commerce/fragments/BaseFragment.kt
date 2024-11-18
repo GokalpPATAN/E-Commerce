@@ -17,9 +17,13 @@ open class BaseFragment<VBinding : ViewBinding>(private val inflateMethod: (Layo
         _binding = inflateMethod.invoke(inflater, container, false)
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 }
