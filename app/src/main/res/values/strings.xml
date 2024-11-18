@@ -9,4 +9,11 @@
     <string name="kullanici_girisi">Kullanıcı girişi başarılı</string>
     <string name="giris_basarili">Giriş başarılı</string>
     <string name="kayit_basarili">Kayıt başarılı.</string>
+    <string name="fiyat">"Fiyat: "</string>
+    <string name="urun_hakkinda">"Ürün Hakkında: "</string>
+    <string name="oy_veren_kisi_sayisi">"Oy veren kişi sayısı: "</string>
+    <string name="puan">"Puanı: "</string>
+    <string name="markasi">"Markası: "</string>
+    <string name="stok_var">Stok var</string>
+    <string name="stokta_kalmadi">Stokta kalmadı</string>
 </resources>

@@ -1,14 +1,17 @@
-package com.patan.commerce.fragments
+package com.patan.commerce.fragments.login
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.patan.commerce.MainActivity
 import com.patan.commerce.R
 import com.patan.commerce.databinding.FragmentLoginBinding
+import com.patan.commerce.fragments.BaseFragment
 import com.patan.commerce.viewmodels.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -39,14 +42,18 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                         viewModel.token.observe(viewLifecycleOwner) {
                             editor.putString("token", "Bearer $it")
                             editor.commit()
+                            val intent = Intent(activity, MainActivity::class.java)
+                            activity?.startActivity(intent)
+                        }
+                        viewModel.userId.observe(viewLifecycleOwner) {
+                            editor.putString("userId", "$it")
+                            editor.commit()
                         }
                         Toast.makeText(
                             this@LoginFragment.requireContext(),
                             getString(R.string.kullanici_girisi),
                             Toast.LENGTH_SHORT
                         ).show()
-                        val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment2()
-                        findNavController().navigate(action)
 
                     }
                 }
@@ -57,5 +64,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             val action = LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
             findNavController().navigate(action)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 }

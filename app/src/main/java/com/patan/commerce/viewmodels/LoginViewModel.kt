@@ -1,9 +1,7 @@
 package com.patan.commerce.viewmodels
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.patan.commerce.model.Cities
 import com.patan.commerce.model.ConfirmRequest
 import com.patan.commerce.model.LoginRequest
 import com.patan.commerce.model.ReConfirmRequest
@@ -15,16 +13,13 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val apiService: ApiService) : ViewModel() {
+class LoginViewModel @Inject constructor(private val apiService: ApiService) :
+    BaseViewModel() {
+
     private val userInfos: MutableLiveData<User?> = MutableLiveData()
-    private val responseNotifications: MutableLiveData<Any?> = MutableLiveData()
-    val notifications get() = responseNotifications
-    private val isSuccess: MutableLiveData<Boolean?> = MutableLiveData()
-    val success get() = isSuccess
-    private val errorMessage: MutableLiveData<String?> = MutableLiveData()
     val token: MutableLiveData<String?> = MutableLiveData()
-    private val cities: MutableLiveData<List<Cities?>?> = MutableLiveData()
-    val _cities get() = cities
+    val userId: MutableLiveData<String?> = MutableLiveData()
+
 
     fun login(userName: String?, password: String?) {
         val user = LoginRequest(userName, password)
@@ -33,16 +28,14 @@ class LoginViewModel @Inject constructor(private val apiService: ApiService) : V
                 val response = apiService.userLogin(user)
                 if (response.isSuccessful) {
                     token.postValue(response.body()?.data?.token)
-                    responseNotifications.postValue(response.body()?.message)
-                    isSuccess.postValue(response.body()?.ısSuccess)
+                    userId.postValue(response.body()?.data?.userId)
+                    handleSuccess(response.body()?.message, response.body()?.ısSuccess)
                     userInfos.postValue(response.body()?.data)
                 } else {
-                    errorMessage.value =
-                        response.message().takeIf { it.isNotEmpty() } ?: "An unknown error occurred"
+                    handleResponseError(response.message())
                 }
-
             } catch (e: Exception) {
-                errorMessage.value = e.message
+                handleError(e.message)
             }
         }
     }
@@ -64,19 +57,16 @@ class LoginViewModel @Inject constructor(private val apiService: ApiService) : V
             try {
                 val response = apiService.userRegister(registerUser)
                 if (response.isSuccessful) {
+                    handleSuccess(response.body()?.message, response.body()?.ısSuccess)
                     userInfos.postValue(response.body()?.data)
-                    responseNotifications.postValue(response.body()?.message)
-                    isSuccess.postValue(response.body()?.ısSuccess)
                 } else {
-                    errorMessage.value =
-                        response.message().takeIf { it.isNotEmpty() } ?: "An unknown error occurred"
+                    handleResponseError(response.message())
                 }
             } catch (e: Exception) {
-                errorMessage.value = e.message
+                handleError(e.message)
             }
         }
     }
-
 
     fun confirmEmail(approvedCode: Int?, confirmToken: String?, userName: String?) {
         val confirmUser = ConfirmRequest(approvedCode, confirmToken, userName)
@@ -85,16 +75,13 @@ class LoginViewModel @Inject constructor(private val apiService: ApiService) : V
                 val response = apiService.userConfirm(confirmUser)
                 if (response.isSuccessful) {
                     token.postValue(response.body()?.data?.token)
-                    responseNotifications.postValue(response.body()?.message)
-                    isSuccess.postValue(response.body()?.ısSuccess)
+                    handleSuccess(response.body()?.message, response.body()?.ısSuccess)
                 } else {
-                    errorMessage.value =
-                        response.message().takeIf { it.isNotEmpty() } ?: "An unknown error occurred"
+                    handleResponseError(response.message())
                 }
             } catch (e: Exception) {
-                errorMessage.value = e.message
+                handleError(e.message)
             }
-            return@launch
         }
     }
 
@@ -105,34 +92,12 @@ class LoginViewModel @Inject constructor(private val apiService: ApiService) : V
                 val response = apiService.userReConfirm(reConfirmUser)
                 if (response.isSuccessful) {
                     token.postValue(response.body()?.data?.token)
-                    responseNotifications.postValue(response.body()?.message)
-                    isSuccess.postValue(response.body()?.ısSuccess)
+                    handleSuccess(response.body()?.message, response.body()?.ısSuccess)
                 } else {
-                    errorMessage.value =
-                        response.message().takeIf { it.isNotEmpty() } ?: "An unknown error occurred"
+                    handleResponseError(response.message())
                 }
             } catch (e: Exception) {
-                errorMessage.value = e.message
-            }
-        }
-
-    }
-
-    fun getCities(token: String?) {
-        viewModelScope.launch {
-            try {
-                val response = apiService.getCities(token = token)
-                if (response.isSuccessful) {
-                    cities.postValue(response.body()?.data)
-                    responseNotifications.postValue(response.body()?.message)
-                    isSuccess.postValue(response.body()?.ısSuccess)
-                } else {
-                    errorMessage.value =
-                        response.message().takeIf { it.isNotEmpty() } ?: "An unknown error occurred"
-                }
-
-            } catch (e: Exception) {
-                errorMessage.value = e.message
+                handleError(e.message)
             }
         }
     }

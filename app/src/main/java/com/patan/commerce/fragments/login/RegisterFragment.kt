@@ -1,4 +1,4 @@
-package com.patan.commerce.fragments
+package com.patan.commerce.fragments.login
 
 import android.os.Bundle
 import android.view.View
@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.patan.commerce.R
 import com.patan.commerce.databinding.FragmentRegisterBinding
+import com.patan.commerce.fragments.BaseFragment
 import com.patan.commerce.viewmodels.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

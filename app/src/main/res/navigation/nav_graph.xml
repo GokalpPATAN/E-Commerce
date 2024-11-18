@@ -7,19 +7,16 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.patan.commerce.fragments.LoginFragment"
+        android:name="com.patan.commerce.fragments.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_homeFragment2"
-            app:destination="@id/homeFragment2" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.patan.commerce.fragments.RegisterFragment"
+        android:name="com.patan.commerce.fragments.login.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
@@ -28,16 +25,12 @@
     </fragment>
     <fragment
         android:id="@+id/confirmEmailFragment"
-        android:name="com.patan.commerce.fragments.ConfirmEmailFragment"
+        android:name="com.patan.commerce.fragments.login.ConfirmEmailFragment"
         android:label="fragment_confirm_email"
         tools:layout="@layout/fragment_confirm_email" >
         <action
             android:id="@+id/action_confirmEmailFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/homeFragment2"
-        android:name="com.patan.commerce.fragments.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+
 </navigation>

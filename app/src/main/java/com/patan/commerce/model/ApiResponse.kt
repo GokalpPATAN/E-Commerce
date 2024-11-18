@@ -9,3 +9,6 @@ data class ApiResponse<T>(
     @SerializedName("MessageSeverity") val messageSeverity: Int?,
     @SerializedName("IsSuccess") val ısSuccess: Boolean?
 )
+
+
+

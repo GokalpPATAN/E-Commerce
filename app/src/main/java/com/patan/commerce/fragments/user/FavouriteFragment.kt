@@ -1,9 +1,10 @@
-package com.patan.commerce.fragments
+package com.patan.commerce.fragments.user
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.patan.commerce.databinding.FragmentFavouriteBinding
+import com.patan.commerce.fragments.BaseFragment
 import com.patan.commerce.viewmodels.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
