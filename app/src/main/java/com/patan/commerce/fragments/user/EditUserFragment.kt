@@ -1,6 +1,5 @@
 package com.patan.commerce.fragments.user
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
@@ -14,9 +13,10 @@ import dagger.hilt.android.AndroidEntryPoint
 class EditUserFragment : BaseFragment<FragmentEditUserBinding>(FragmentEditUserBinding::inflate) {
     private val viewModel by viewModels<UserViewModel>()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val pref = activity?.getSharedPreferences("my_shared_pref", Context.MODE_PRIVATE)
-        val token = pref?.getString("token", "default")
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         getUser()
 
         binding.saveButton.setOnClickListener {
@@ -73,7 +73,6 @@ class EditUserFragment : BaseFragment<FragmentEditUserBinding>(FragmentEditUserB
 
     private fun editTextVisibilityInvisible() {
         binding.apply {
-
             textUserName.isVisible = true
             editUserName.isVisible = false
 
@@ -88,7 +87,6 @@ class EditUserFragment : BaseFragment<FragmentEditUserBinding>(FragmentEditUserB
 
             textPhoneNumber.isVisible = true
             editPhoneNumber.isVisible = false
-
         }
     }
 
@@ -106,7 +104,8 @@ class EditUserFragment : BaseFragment<FragmentEditUserBinding>(FragmentEditUserB
                     name = name.ifEmpty { user?.name },
                     phoneNumber = phoneNumber.ifEmpty { user?.phoneNumber },
                     surname = surName.ifEmpty { user?.surname },
-                    userName = userName.ifEmpty { user?.userName })
+                    userName = userName.ifEmpty { user?.userName },
+                )
             }
             editTextVisibilityInvisible()
         }

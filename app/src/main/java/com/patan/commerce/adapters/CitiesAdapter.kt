@@ -8,39 +8,39 @@ import com.patan.commerce.model.Cities
 
 class CitiesAdapter(
     private val citiesList: List<Cities?>?,
-    private val citiesClickListener: CitiesClickListener
-) : RecyclerView.Adapter<CitiesAdapter.ViewHolder>() {
-    class ViewHolder(val binding: ItemcitiesrecyclerviewBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    private val citiesClickListener: CitiesClickListener,
+) : BaseAdapter<Cities, CitiesAdapter.ViewHolder>(citiesList, citiesClickListener) {
+    class ViewHolder(
+        val binding: ItemcitiesrecyclerviewBinding,
+    ) : RecyclerView.ViewHolder(binding.root)
 
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int,
+    ): ViewHolder =
+        ViewHolder(
             ItemcitiesrecyclerviewBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
-                false
-            )
+                false,
+            ),
         )
-    }
 
-    override fun getItemCount(): Int {
-        return citiesList!!.size
-    }
+    override fun getItemCount(): Int = citiesList!!.size
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(
+        holder: ViewHolder,
+        position: Int,
+    ) {
         val city = citiesList!![position]
 
         holder.binding.cityNameTextView.text = city?.name
 
         holder.binding.root.setOnClickListener {
             citiesClickListener.onCitiesClicked(
-                city?.Id,
-                city?.name
+                city?.id,
+                city?.name,
             )
         }
     }
-
 }
-

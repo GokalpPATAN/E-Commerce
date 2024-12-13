@@ -11,10 +11,13 @@ import com.patan.commerce.viewmodels.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ConfirmEmailFragment :
-    BaseFragment<FragmentConfirmEmailBinding>(FragmentConfirmEmailBinding::inflate) {
+class ConfirmEmailFragment : BaseFragment<FragmentConfirmEmailBinding>(FragmentConfirmEmailBinding::inflate) {
     private val viewModel by viewModels<LoginViewModel>()
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
         binding.confirmButton.setOnClickListener {
             binding.apply {
@@ -23,22 +26,14 @@ class ConfirmEmailFragment :
                 viewModel.token.observe(viewLifecycleOwner) {
                     viewModel.confirmEmail(approvedCode, it, userName)
                 }
-                viewModel.success.observe(viewLifecycleOwner) { success ->
+                viewModel.success.observe(viewLifecycleOwner) {
                     viewModel.notifications.observe(viewLifecycleOwner) {
-                        if (success == false) {
-                            Toast.makeText(
+                        Toast
+                            .makeText(
                                 this@ConfirmEmailFragment.requireContext(),
                                 it.toString(),
-                                Toast.LENGTH_SHORT
+                                Toast.LENGTH_SHORT,
                             ).show()
-
-                        } else {
-                            Toast.makeText(
-                                this@ConfirmEmailFragment.requireContext(),
-                                it.toString(),
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
                     }
                 }
             }

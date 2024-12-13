@@ -14,22 +14,26 @@
         android:id="@+id/userFragment"
         android:name="com.patan.commerce.fragments.user.UserFragment"
         android:label="fragment_user"
-        tools:layout="@layout/fragment_user" >
+        tools:layout="@layout/fragment_user">
         <action
             android:id="@+id/action_userFragment_to_editUserFragment"
             app:destination="@id/editUserFragment" />
         <action
-            android:id="@+id/action_userFragment_to_addAddressFragment"
-            app:destination="@id/addAddressFragment" />
+            android:id="@+id/action_userFragment_to_addressNavigatorFragment"
+            app:destination="@id/addressNavigatorFragment" />
         <action
-            android:id="@+id/action_userFragment_to_editAddressFragment"
-            app:destination="@id/editAddressFragment" />
+            android:id="@+id/action_userFragment_to_paymentMethodFragment"
+            app:destination="@id/paymentMethodFragment" />
     </fragment>
     <fragment
         android:id="@+id/basketFragment2"
         android:name="com.patan.commerce.fragments.user.BasketFragment"
         android:label="fragment_basket"
-        tools:layout="@layout/fragment_basket" />
+        tools:layout="@layout/fragment_basket">
+        <action
+            android:id="@+id/action_basketFragment2_to_orderFragment"
+            app:destination="@id/orderFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favouriteFragment2"
         android:name="com.patan.commerce.fragments.user.FavouriteFragment"
@@ -39,7 +43,7 @@
         android:id="@+id/productsFragment"
         android:name="com.patan.commerce.fragments.products.ProductsFragment"
         android:label="fragment_products"
-        tools:layout="@layout/fragment_products" >
+        tools:layout="@layout/fragment_products">
         <action
             android:id="@+id/action_productsFragment_to_productDetailFragment2"
             app:destination="@id/productDetailFragment2" />
@@ -51,7 +55,7 @@
         android:id="@+id/productDetailFragment2"
         android:name="com.patan.commerce.fragments.products.ProductDetailFragment"
         android:label="fragment_product_detail"
-        tools:layout="@layout/fragment_product_detail" >
+        tools:layout="@layout/fragment_product_detail">
         <argument
             android:name="productId"
             app:argType="integer" />
@@ -63,7 +67,7 @@
         android:id="@+id/categoriesFragment"
         android:name="com.patan.commerce.fragments.products.CategoriesFragment"
         android:label="fragment_categories"
-        tools:layout="@layout/fragment_categories" >
+        tools:layout="@layout/fragment_categories">
         <argument
             android:name="topCategoryId"
             app:argType="integer" />
@@ -78,4 +82,30 @@
         android:name="com.patan.commerce.fragments.user.EditAddressFragment"
         android:label="fragment_edit_adress"
         tools:layout="@layout/fragment_edit_adress" />
+    <fragment
+        android:id="@+id/addressNavigatorFragment"
+        android:name="com.patan.commerce.fragments.user.AddressNavigatorFragment"
+        android:label="fragment_address_navigator"
+        tools:layout="@layout/fragment_address_navigator">
+        <action
+            android:id="@+id/action_addressNavigatorFragment_to_editAddressFragment"
+            app:destination="@id/editAddressFragment" />
+        <action
+            android:id="@+id/action_addressNavigatorFragment_to_addAddressFragment"
+            app:destination="@id/addAddressFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentMethodFragment"
+        android:name="com.patan.commerce.fragments.user.PaymentMethodFragment"
+        android:label="fragment_payment_method"
+        tools:layout="@layout/fragment_payment_method" />
+    <fragment
+        android:id="@+id/orderFragment"
+        android:name="com.patan.commerce.fragments.user.OrderFragment"
+        android:label="fragment_order"
+        tools:layout="@layout/fragment_order">
+        <argument
+            android:name="items"
+            app:argType="com.patan.commerce.model.ItemList" />
+    </fragment>
 </navigation>

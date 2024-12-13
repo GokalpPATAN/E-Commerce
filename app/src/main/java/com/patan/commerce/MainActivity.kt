@@ -1,6 +1,8 @@
 package com.patan.commerce
 
 import android.os.Bundle
+import android.view.View
+import android.view.animation.AnimationUtils
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -13,6 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMain2Binding
     private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMain2Binding.inflate(layoutInflater)
@@ -22,7 +25,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.apply {
             bottomNav.setOnItemSelectedListener { item ->
-
+                val view = findViewById<View>(item.itemId)
+                val animation = AnimationUtils.loadAnimation(this@MainActivity, R.anim.scale_up)
+                view.startAnimation(animation)
+                true
                 when (item.itemId) {
                     R.id.productsFragment -> {
                         navController.navigate(R.id.productsFragment)
@@ -57,7 +63,5 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(binding.bottomNav, navController)
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp() || super.onSupportNavigateUp()
-    }
+    override fun onSupportNavigateUp(): Boolean = navController.navigateUp() || super.onSupportNavigateUp()
 }

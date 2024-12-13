@@ -4,229 +4,181 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F4F6F9"
-    android:padding="16dp"
+
     tools:context=".fragments.user.EditUserFragment">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewUserInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:cardBackgroundColor="#FFFFFF"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="32dp"
+        app:cardElevation="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
-
+            android:gravity="center_horizontal"
+            android:padding="16dp"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/labelUserName"
+                android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Username:"
-                android:textColor="#6200EE"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginBottom="16dp"
+                android:text="Account Details"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textUserName"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:background="#32B6A9A9"
-                android:textColor="#7EB6A9A9"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/labelUserName"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/labelUserName"
-                app:layout_constraintTop_toTopOf="@id/labelUserName" />
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/editUserName"
-                android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/textUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_text_background"
+                    android:padding="12dp"
+                    android:text="Username"
+                    android:textColor="@android:color/darker_gray"
+                    android:visibility="visible" />
+
+                <EditText
+                    android:id="@+id/editUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_text_background"
+                    android:hint="Username"
+                    android:padding="12dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Edit Username"
-                android:inputType="text"
-                android:textColor="#333333"
-                android:textSize="16sp"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@id/labelUserName"
-                app:layout_constraintEnd_toEndOf="@id/textUserName"
-                app:layout_constraintStart_toEndOf="@id/labelUserName"
-                app:layout_constraintTop_toTopOf="@id/labelUserName" />
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/labelName"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/textName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_text_background"
+                    android:padding="12dp"
+                    android:text="Name"
+                    android:textColor="@android:color/darker_gray"
+                    android:visibility="visible" />
+
+                <EditText
+                    android:id="@+id/editName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_text_background"
+                    android:hint="Name"
+                    android:padding="12dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Name:"
-                android:textColor="#6200EE"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/labelUserName" />
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textName"
-                android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/textPhoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_text_background"
+                    android:padding="12dp"
+                    android:text="Mobile Number"
+                    android:textColor="@android:color/darker_gray"
+                    android:visibility="visible" />
+
+                <EditText
+                    android:id="@+id/editPhoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_text_background"
+                    android:hint="Mobile Number"
+                    android:padding="12dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:background="#32B6A9A9"
-                android:textColor="#7EB6A9A9"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@id/labelName"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/labelName"
-                app:layout_constraintTop_toTopOf="@id/labelName" />
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/editName"
-                android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/textEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_text_background"
+                    android:padding="12dp"
+                    android:text="Email"
+                    android:textColor="@android:color/darker_gray"
+                    android:visibility="visible" />
+
+                <EditText
+                    android:id="@+id/editEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_text_background"
+                    android:hint="Email"
+                    android:padding="12dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Edit Name"
-                android:inputType="text"
-                android:textColor="#333333"
-                android:textSize="16sp"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@id/labelName"
-                app:layout_constraintEnd_toEndOf="@id/textName"
-                app:layout_constraintStart_toEndOf="@id/labelName"
-                app:layout_constraintTop_toTopOf="@id/labelName" />
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/labelSurname"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/textSurname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_text_background"
+                    android:padding="12dp"
+                    android:text="Password"
+                    android:textColor="@android:color/darker_gray"
+                    android:visibility="visible" />
+
+                <EditText
+                    android:id="@+id/editSurname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_text_background"
+                    android:hint="Password"
+                    android:padding="12dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/saveButton"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Surname:"
-                android:textColor="#6200EE"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/labelName" />
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_background"
+                android:padding="12dp"
+                android:text="Edit"
+                android:textColor="@android:color/white" />
 
-            <TextView
-                android:id="@+id/textSurname"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:background="#32B6A9A9"
-                android:textColor="#7EB6A9A9"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/labelSurname"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/labelSurname"
-                app:layout_constraintTop_toTopOf="@id/labelSurname" />
-
-            <EditText
-                android:id="@+id/editSurname"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:hint="Edit Surname"
-                android:inputType="text"
-                android:textColor="#333333"
-                android:textSize="16sp"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@id/labelSurname"
-                app:layout_constraintEnd_toEndOf="@id/textSurname"
-                app:layout_constraintStart_toEndOf="@id/labelSurname"
-                app:layout_constraintTop_toTopOf="@id/labelSurname" />
-
-            <TextView
-                android:id="@+id/labelEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Email:"
-                android:textColor="#6200EE"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/labelSurname" />
-
-            <TextView
-                android:id="@+id/textEmail"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:background="#32B6A9A9"
-                android:textColor="#7EB6A9A9"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@id/labelEmail"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/labelEmail"
-                app:layout_constraintTop_toTopOf="@id/labelEmail" />
-
-            <EditText
-                android:id="@+id/editEmail"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:hint="Edit Email"
-                android:inputType="textEmailAddress"
-                android:textColor="#333333"
-                android:textSize="16sp"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@id/labelEmail"
-                app:layout_constraintEnd_toEndOf="@id/textEmail"
-                app:layout_constraintStart_toEndOf="@id/labelEmail"
-                app:layout_constraintTop_toTopOf="@id/labelEmail" />
-
-            <TextView
-                android:id="@+id/labelPhoneNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Phone Number:"
-                android:textColor="#6200EE"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/labelEmail" />
-
-            <TextView
-                android:id="@+id/textPhoneNumber"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:background="#32B6A9A9"
-                android:textColor="#7EB6A9A9"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@id/labelPhoneNumber"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/labelPhoneNumber"
-                app:layout_constraintTop_toTopOf="@id/labelPhoneNumber" />
-
-            <EditText
-                android:id="@+id/editPhoneNumber"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:hint="Edit Phone Number"
-                android:inputType="phone"
-                android:textColor="#333333"
-                android:textSize="16sp"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@id/labelPhoneNumber"
-                app:layout_constraintEnd_toEndOf="@id/textPhoneNumber"
-                app:layout_constraintStart_toEndOf="@id/labelPhoneNumber"
-                app:layout_constraintTop_toTopOf="@id/labelPhoneNumber" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
-
-    <Button
-        android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save Changes"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/cardViewUserInfo"
-        app:layout_constraintStart_toStartOf="@+id/cardViewUserInfo"
-        app:layout_constraintTop_toBottomOf="@+id/cardViewUserInfo"
-        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
