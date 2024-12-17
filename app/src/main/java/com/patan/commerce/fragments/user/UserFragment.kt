@@ -9,30 +9,24 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class UserFragment : BaseFragment<FragmentUserBinding>(FragmentUserBinding::inflate) {
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            editUserButton.setOnClickListener {
+            itemAccountDetails.setOnClickListener {
                 val action = UserFragmentDirections.actionUserFragmentToEditUserFragment()
                 findNavController().navigate(action)
             }
-
-            editAdressButton.setOnClickListener {
-                val action = UserFragmentDirections.actionUserFragmentToEditAddressFragment()
-                findNavController().navigate(action)
-
-            }
-
-            adressButton.setOnClickListener {
-                val action = UserFragmentDirections.actionUserFragmentToAddAddressFragment()
+            itemDeliveryAddresses.setOnClickListener {
+                val action = UserFragmentDirections.actionUserFragmentToAddressNavigatorFragment()
                 findNavController().navigate(action)
             }
-
-            resetButton.setOnClickListener { }
+            itemPaymentMethod.setOnClickListener {
+                val action = UserFragmentDirections.actionUserFragmentToPaymentMethodFragment()
+                findNavController().navigate(action)
+            }
         }
-
-
     }
-
 }

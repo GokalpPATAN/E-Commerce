@@ -20,7 +20,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     private val viewModel by viewModels<LoginViewModel>()
     private lateinit var editor: SharedPreferences.Editor
     private lateinit var sharedPreferences: SharedPreferences
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
         sharedPreferences = activity?.getSharedPreferences("my_shared_pref", Context.MODE_PRIVATE)!!
         editor = sharedPreferences.edit()
@@ -32,11 +36,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                 viewModel.success.observe(viewLifecycleOwner) { success ->
                     if (success == false) {
                         viewModel.notifications.observe(viewLifecycleOwner) {
-                            Toast.makeText(
-                                this@LoginFragment.requireContext(),
-                                it.toString(),
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            Toast
+                                .makeText(
+                                    this@LoginFragment.requireContext(),
+                                    it.toString(),
+                                    Toast.LENGTH_SHORT,
+                                ).show()
                         }
                     } else {
                         viewModel.token.observe(viewLifecycleOwner) {
@@ -49,19 +54,22 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                             editor.putString("userId", "$it")
                             editor.commit()
                         }
-                        Toast.makeText(
-                            this@LoginFragment.requireContext(),
-                            getString(R.string.kullanici_girisi),
-                            Toast.LENGTH_SHORT
-                        ).show()
-
+                        Toast
+                            .makeText(
+                                this@LoginFragment.requireContext(),
+                                getString(R.string.kullanici_girisi),
+                                Toast.LENGTH_SHORT,
+                            ).show()
                     }
                 }
-
             }
         }
         binding.registerButton.setOnClickListener {
             val action = LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
+            findNavController().navigate(action)
+        }
+        binding.forgotPassword.setOnClickListener {
+            val action = LoginFragmentDirections.actionLoginFragmentToForgotPasswordFragment()
             findNavController().navigate(action)
         }
     }

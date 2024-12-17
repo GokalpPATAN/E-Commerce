@@ -1,79 +1,92 @@
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="10dp"
-    android:background="?android:attr/selectableItemBackground"
-    app:cardBackgroundColor="@android:color/white">
+    android:layout_margin="16dp"
+    app:cardBackgroundColor="@color/light_gray"
+    app:cardCornerRadius="32dp"
+    app:cardElevation="8dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.5">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="8dp"
-        android:background="@android:color/white">
+        android:layout_height="wrap_content"
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/productName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:text="Product Name"
-            android:textSize="16sp"
-            android:textColor="@android:color/black"
+            android:textColor="@color/primary_text_color"
+            android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintHorizontal_bias="0.5" />
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/productImage"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintTop_toBottomOf="@id/productName"
-            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            android:clipToOutline="true"
+            android:outlineProvider="background"
+            android:scaleType="centerCrop"
             app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/productName"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/productQuantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Quantity: 1"
-            android:textSize="14sp"
-            android:textColor="@android:color/darker_gray"
-            app:layout_constraintTop_toTopOf="@id/productImage"
-            app:layout_constraintStart_toEndOf="@id/productImage"
             android:layout_marginEnd="16dp"
+            android:text="Quantity: 1"
+            android:textColor="@color/secondary_text_color"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0" />
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/productImage"
+            app:layout_constraintTop_toTopOf="@id/productImage" />
 
         <TextView
             android:id="@+id/productPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="$10.00"
-            android:textSize="14sp"
-            android:textColor="@android:color/black"
-            app:layout_constraintTop_toBottomOf="@id/productQuantity"
+            android:textColor="@color/primary_text_color"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@id/productQuantity"
             app:layout_constraintStart_toStartOf="@id/productQuantity"
-            app:layout_constraintEnd_toEndOf="@id/productQuantity" />
+            app:layout_constraintTop_toBottomOf="@id/productQuantity" />
 
         <ImageView
             android:id="@+id/removeItemIcon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:contentDescription="Remove Item"
+            android:padding="4dp"
+            android:scaleType="centerInside"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/productImage"
-            app:srcCompat="@drawable/baseline_delete_24" />
+            app:srcCompat="@drawable/baseline_delete_24"
+            app:tint="@color/iconColor" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

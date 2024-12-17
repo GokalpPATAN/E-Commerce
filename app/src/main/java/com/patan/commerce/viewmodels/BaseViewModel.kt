@@ -13,7 +13,10 @@ open class BaseViewModel : ViewModel() {
     protected val responseNotifications: MutableLiveData<String?> = MutableLiveData()
     val notifications get() = responseNotifications
 
-    protected fun handleSuccess(message: Any?, success: Boolean?) {
+    protected fun handleSuccess(
+        message: Any?,
+        success: Boolean?,
+    ) {
         responseNotifications.postValue(message.toString())
         isSuccess.postValue(success)
     }

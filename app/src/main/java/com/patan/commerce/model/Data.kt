@@ -1,6 +1,8 @@
 package com.patan.commerce.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class User(
     @SerializedName("Email") val email: String?,
@@ -16,88 +18,58 @@ data class User(
 )
 
 data class Cities(
-    @SerializedName("Id") val Id: Int?,
+    @SerializedName("Id") val id: Int?,
     @SerializedName("Name") val name: String?,
 )
 
 data class Products(
-    @SerializedName("Name")
-    val name: String?,
-    @SerializedName("Price")
-    val price: Int?,
-    @SerializedName("Score")
-    val score: Double?,
-    @SerializedName("ScoreCount")
-    val scoreCount: Int?,
-    @SerializedName("SubCategoryId")
-    val subCategoryId: Int?,
-    @SerializedName("TradeMark")
-    val tradeMark: String?,
-    @SerializedName("Id")
-    val ıd: Int?,
-    @SerializedName("Images")
-    val ımages: List<Any?>?,
-    @SerializedName("Information")
-    val ınformation: Any?,
-    @SerializedName("IsStocksOut")
-    val ısStocksOut: Boolean?
+    @SerializedName("Name") val name: String?,
+    @SerializedName("Price") val price: Int?,
+    @SerializedName("Score") val score: Double?,
+    @SerializedName("ScoreCount") val scoreCount: Int?,
+    @SerializedName("SubCategoryId") val subCategoryId: Int?,
+    @SerializedName("TradeMark") val tradeMark: String?,
+    @SerializedName("Id") val id: Int?,
+    @SerializedName("Images") val images: List<Any?>?,
+    @SerializedName("Information") val information: Any?,
+    @SerializedName("IsStocksOut") val isStocksOut: Boolean?,
 )
 
 data class HighestCategory(
-    @SerializedName("TopCategoryId")
-    val topCategoryId: Int?,
-    @SerializedName("CategoryId")
-    val CategoryId: Int?,
-    @SerializedName("Name")
-    val name: String?,
-    @SerializedName("Description")
-    val description: String?,
-    @SerializedName("Image")
-    val image: String?
+    @SerializedName("TopCategoryId") val topCategoryId: Int?,
+    @SerializedName("CategoryId") val categoryId: Int?,
+    @SerializedName("Name") val name: String?,
+    @SerializedName("Description") val description: String?,
+    @SerializedName("Image") val image: String?,
 )
 
 data class CategoriesByParentId(
-    @SerializedName("CategoryId")
-    val CategoryId: Int?,
-    @SerializedName("Name")
-    val name: String?,
-    @SerializedName("Description")
-    val description: String?,
-    @SerializedName("Image")
-    val image: String?
+    @SerializedName("CategoryId") val categoryId: Int?,
+    @SerializedName("Name") val name: String?,
+    @SerializedName("Description") val description: String?,
+    @SerializedName("Image") val image: String?,
 )
 
 data class Addresses(
-    @SerializedName("Id")
-    val id: Int?,
-    @SerializedName("CityName")
-    val cityName: String?,
-    @SerializedName("CountyName")
-    val countyName: String?,
-    @SerializedName("Description")
-    val description: String?,
-    @SerializedName("AddressName")
-    val addressName: String?,
-    @SerializedName("ReciverName")
-    val receiverName: String?,
-    @SerializedName("ReciverPhone")
-    val receiverPhone: String?
+    @SerializedName("Id") val id: Int?,
+    @SerializedName("CityName") val cityName: String?,
+    @SerializedName("CountyName") val countyName: String?,
+    @SerializedName("Description") val description: String?,
+    @SerializedName("AddressName") val addressName: String?,
+    @SerializedName("ReciverName") val receiverName: String?,
+    @SerializedName("ReciverPhone") val receiverPhone: String?,
 )
 
 data class ProductsByCategoryRequest(
-    @SerializedName("CategoryId")
-    val CategoryId: Int?,
-    @SerializedName("PageNumber")
-    val PageNumber: Int?,
-    @SerializedName("ProductCount")
-    val ProductCount: Int?,
-    @SerializedName("Options")
-    val Options: Int?
+    @SerializedName("CategoryId") val categoryId: Int?,
+    @SerializedName("PageNumber") val pageNumber: Int?,
+    @SerializedName("ProductCount") val productCount: Int?,
+    @SerializedName("Options") val options: Int?,
 )
 
 data class CartData(
     @SerializedName("CardId") val cardId: Int?,
-    @SerializedName("CardItems") val cardItems: List<CardItem>?
+    @SerializedName("CardItems") val cardItems: List<CardItem>?,
 )
 
 data class CardItem(
@@ -106,5 +78,46 @@ data class CardItem(
     @SerializedName("ProductName") val productName: String?,
     @SerializedName("Price") val price: Int?,
     @SerializedName("Quantity") val quantity: Int?,
-    @SerializedName("Images") val images: List<String>?
+    @SerializedName("Images") val images: List<String>?,
 )
+
+@Parcelize
+data class CardItems(
+    @SerializedName("CardItemId") val cardItemId: Int?,
+) : Parcelable
+
+data class AddressesInputs(
+    val addressId: Int?,
+    val addressName: String?,
+    val receiverName: String?,
+    val receiverPhone: String?,
+    val userId: String?,
+    val cityId: Int?,
+    val countyId: Int?,
+    val description: String?,
+)
+
+data class GetComment(
+    @SerializedName("Id") val productId: Int?,
+    @SerializedName("Score") val score: Int?,
+    @SerializedName("Command") val comment: String?,
+)
+
+data class GetPaymentCards(
+    @SerializedName("CardName") val cardName: String?,
+    @SerializedName("CardNumber") val cardNumber: String?,
+    @SerializedName("FinishMonth") val finishMonth: Int?,
+    @SerializedName("FinishYear") val finishYear: Int?,
+    @SerializedName("CVV") val cvv: String?,
+    @SerializedName("OwnerName") val ownerName: String?,
+    @SerializedName("Id") val id: String?,
+)
+
+data class PaymentCardResponses(
+    @SerializedName("PaymentCardResponses") val paymentCards: List<GetPaymentCards>?,
+)
+
+@Parcelize
+data class ItemList(
+    val items: List<CardItems?>,
+) : Parcelable

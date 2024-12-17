@@ -4,224 +4,232 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+
+    android:background="@color/titleTextColor"
     tools:context=".fragments.user.AddAddressFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:elevation="6dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="32dp"
+        app:cardElevation="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.08">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp">
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="16dp">
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="İl: "
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginBottom="16dp"
+                android:text="Add Address"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/cityTextView"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="Şehir Seçiniz"
-                android:textColor="@color/gray"
-                android:textSize="16sp"
-                android:textStyle="italic"
-                app:layout_constraintBottom_toBottomOf="@id/textView5"
-                app:layout_constraintStart_toEndOf="@id/textView5"
-                app:layout_constraintTop_toTopOf="@id/textView5" />
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_text_background"
+                    android:padding="4dp"
+                    android:text="İl:"
+                    android:textColor="@android:color/darker_gray"
+                    android:visibility="visible" />
+
+                <EditText
+                    android:id="@+id/addressEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_text_background"
+                    android:hint="İl"
+                    android:padding="4dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="İlçe: "
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView5" />
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_text_background"
+                    android:padding="4dp"
+                    android:text="İlçe:"
+                    android:textColor="@android:color/darker_gray"
+                    android:visibility="visible" />
+
+                <EditText
+                    android:id="@+id/receiverEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_text_background"
+                    android:hint="İlçe"
+                    android:padding="4dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="İlçe Seçiniz"
-                android:textColor="@color/gray"
-                android:textSize="16sp"
-                android:textStyle="italic"
-                app:layout_constraintBottom_toBottomOf="@id/textView7"
-                app:layout_constraintStart_toEndOf="@id/textView7"
-                app:layout_constraintTop_toTopOf="@id/textView7" />
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_text_background"
+                    android:padding="4dp"
+                    android:text="Adres Başlığı:"
+                    android:textColor="@android:color/darker_gray"
+                    android:visibility="visible" />
+
+                <EditText
+                    android:id="@+id/phoneEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_text_background"
+                    android:hint="Adres Başlığı"
+                    android:padding="4dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Adres Başlığı: "
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/textView7"
-                app:layout_constraintTop_toBottomOf="@+id/textView7"
-                app:layout_constraintVertical_bias="0.0" />
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_text_background"
+                    android:padding="4dp"
+                    android:text="Alıcının ismi:"
+                    android:textColor="@android:color/darker_gray"
+                    android:visibility="visible" />
+
+                <EditText
+                    android:id="@+id/descEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_text_background"
+                    android:hint="Alıcının ismi"
+                    android:padding="4dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Alıcının ismi: "
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@id/textView6"
-                app:layout_constraintTop_toBottomOf="@id/textView6"
-                app:layout_constraintVertical_bias="0.0" />
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_text_background"
+                    android:padding="4dp"
+                    android:text="Alıcının telefonu:"
+                    android:textColor="@android:color/darker_gray"
+                    android:visibility="visible" />
+
+                <EditText
+                    android:id="@+id/editPhoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_text_background"
+                    android:hint="Alıcının telefonu"
+                    android:padding="4dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Alıcının telefonu: "
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@id/textView8"
-                app:layout_constraintTop_toBottomOf="@id/textView8"
-                app:layout_constraintVertical_bias="0.0" />
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_text_background"
+                    android:padding="4dp"
+                    android:text="Not:"
+                    android:textColor="@android:color/darker_gray"
+                    android:visibility="visible" />
+
+                <EditText
+                    android:id="@+id/editEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_text_background"
+                    android:hint="Not"
+                    android:padding="4dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/saveAddressButton"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Not: "
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@id/textView10"
-                app:layout_constraintTop_toBottomOf="@id/textView10"
-                app:layout_constraintVertical_bias="0.0" />
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_background"
+                android:padding="4dp"
+                android:text="Save Address"
+                android:textColor="@android:color/white" />
 
-            <EditText
-                android:id="@+id/addressEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:ems="8"
-                android:inputType="text"
-                app:layout_constraintBottom_toBottomOf="@+id/textView6"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/textView6"
-                app:layout_constraintTop_toTopOf="@+id/textView6" />
-
-            <EditText
-                android:id="@+id/receiverEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:ems="8"
-                android:inputType="text"
-                app:layout_constraintBottom_toBottomOf="@+id/textView8"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/textView8"
-                app:layout_constraintTop_toTopOf="@+id/textView8" />
-
-            <EditText
-                android:id="@+id/phoneEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:ems="8"
-                android:inputType="text"
-                app:layout_constraintBottom_toBottomOf="@+id/textView10"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/textView10"
-                app:layout_constraintTop_toTopOf="@+id/textView10" />
-
-            <EditText
-                android:id="@+id/descEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:ems="8"
-                android:inputType="text"
-                app:layout_constraintBottom_toBottomOf="@+id/textView11"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/textView11"
-                app:layout_constraintTop_toTopOf="@+id/textView11" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:elevation="6dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="32dp"
+        app:cardElevation="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2">
+        app:layout_constraintTop_toBottomOf="@+id/cardView2"
+        app:layout_constraintVertical_bias="0.16">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="180dp"
+            android:layout_marginBottom="16dp"
             android:padding="12dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
     </androidx.cardview.widget.CardView>
-
-    <Button
-        android:id="@+id/saveAddressButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save Address"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2"
-        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

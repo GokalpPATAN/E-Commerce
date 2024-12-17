@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:cardCornerRadius="8dp"
+    android:layout_margin="8dp"
+    app:cardBackgroundColor="@color/titleTextColor"
+    app:cardCornerRadius="16dp"
     app:cardElevation="4dp"
     tools:context=".fragments.products.ProductDetailFragment">
 
@@ -12,7 +14,6 @@
         android:layout_height="match_parent"
         android:padding="16dp">
 
-        <!-- Product Name -->
         <TextView
             android:id="@+id/nameTextView"
             android:layout_width="0dp"
@@ -26,7 +27,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Product Image -->
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="0dp"
@@ -39,17 +39,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/nameTextView" />
 
-        <!-- Separator Line -->
         <View
+            android:id="@+id/view"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_marginBottom="16dp"
             android:background="#DDDDDD"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageView" />
 
-        <!-- Price -->
         <TextView
             android:id="@+id/priceTextView"
             android:layout_width="wrap_content"
@@ -62,7 +60,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageView" />
 
-        <!-- Score -->
         <TextView
             android:id="@+id/scoreTextView"
             android:layout_width="wrap_content"
@@ -73,7 +70,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/priceTextView" />
 
-        <!-- Score Count -->
         <TextView
             android:id="@+id/scoreCountTextView"
             android:layout_width="wrap_content"
@@ -85,18 +81,16 @@
             app:layout_constraintStart_toEndOf="@id/scoreTextView"
             app:layout_constraintTop_toTopOf="@id/scoreTextView" />
 
-        <!-- Separator Line -->
         <View
+            android:id="@+id/view2"
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
             android:background="#DDDDDD"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/scoreTextView" />
 
-        <!-- Brand -->
         <TextView
             android:id="@+id/tradeMarkTextView"
             android:layout_width="wrap_content"
@@ -108,7 +102,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/scoreTextView" />
 
-        <!-- Product Details -->
         <TextView
             android:id="@+id/informationTextView"
             android:layout_width="0dp"
@@ -121,7 +114,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tradeMarkTextView" />
 
-        <!-- Stock Status -->
         <LinearLayout
             android:id="@+id/stockStatusLayout"
             android:layout_width="wrap_content"
@@ -147,9 +139,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:padding="8dp"
-            android:orientation="horizontal"
             android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/stockStatusLayout">
@@ -159,11 +151,11 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:backgroundTint="#DDDDDD"
+                android:contentDescription="Decrease quantity"
                 android:elevation="4dp"
                 app:icon="@drawable/baseline_remove_24"
                 app:iconGravity="textStart"
-                app:iconSize="24dp"
-                android:contentDescription="Decrease quantity" />
+                app:iconSize="24dp" />
 
             <TextView
                 android:id="@+id/counterTextView"
@@ -182,11 +174,11 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:backgroundTint="#DDDDDD"
+                android:contentDescription="Increase quantity"
                 android:elevation="4dp"
                 app:icon="@drawable/baseline_add_24"
                 app:iconGravity="textStart"
-                app:iconSize="24dp"
-                android:contentDescription="Increase quantity" />
+                app:iconSize="24dp" />
 
             <Button
                 android:id="@+id/addToCart"
@@ -194,13 +186,101 @@
                 android:layout_height="48dp"
                 android:layout_marginStart="24dp"
                 android:backgroundTint="#2196F3"
+                android:contentDescription="Add product to cart"
                 android:elevation="4dp"
                 android:text="Add to Cart"
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                android:contentDescription="Add product to cart" />
+                android:textStyle="bold" />
         </LinearLayout>
 
+
+        <CheckBox
+            android:id="@+id/favCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@drawable/checkbox_selector"
+            app:buttonTint="@color/check_color"
+            app:layout_constraintBottom_toTopOf="@+id/view2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/scoreCountTextView"
+            app:layout_constraintTop_toTopOf="@+id/view" />
+
+        <TextView
+            android:id="@+id/commentsTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Comments"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/counterLayout" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/commentsRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/titleTextColor"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/commentInputLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/commentsTitleTextView"
+            tools:listitem="@layout/itemcommentrecyclerview" />
+
+        <LinearLayout
+            android:id="@+id/commentInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/commentsRecyclerView">
+
+            <EditText
+                android:id="@+id/commentEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/login_text_background"
+                android:hint="Add a comment..."
+                android:padding="8dp"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/postCommentButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="#2196F3"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="Post"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/scoreEditText"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/login_text_background"
+            android:gravity="center"
+            android:hint="Enter score"
+            android:textColor="#000000"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/commentsRecyclerView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/commentsTitleTextView"
+            app:layout_constraintTop_toTopOf="@id/commentsTitleTextView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

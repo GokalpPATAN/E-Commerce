@@ -1,258 +1,269 @@
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardViewAddressInfo"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
-    app:cardBackgroundColor="#FFFFFF"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="8dp"
+    app:cardBackgroundColor="@color/light_gray"
+    app:cardCornerRadius="32dp"
+    app:cardElevation="16dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:padding="16dp">
 
-        <TextView
-            android:id="@+id/labelCityName"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="City Name:"
-            android:textColor="#6200EE"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textCityName"
-            android:layout_width="0dp"
+            <TextView
+                android:id="@+id/labelCityName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="City Name:"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textCityName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text_background_v1"
+                android:text="CityName"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/editCityName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text_background_v1"
+                android:hint="Edit City Name"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <ImageButton
+                android:id="@+id/deleteButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Delete Address"
+                android:src="@drawable/baseline_delete_24" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:text="CityName"
-            android:textColor="#7EB6A9A9"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@id/labelCityName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/labelCityName"
-            app:layout_constraintTop_toTopOf="@id/labelCityName" />
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/editCityName"
-            android:layout_width="0dp"
+            <TextView
+                android:id="@+id/labelCountyName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="County Name:"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textCountyName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text_background_v1"
+                android:text="CountyName"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/editCountyName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text_background_v1"
+                android:hint="Edit County Name"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Edit City Name"
-            android:inputType="text"
-            android:textColor="#333333"
-            android:textSize="16sp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/labelCityName"
-            app:layout_constraintEnd_toEndOf="@id/textCityName"
-            app:layout_constraintStart_toEndOf="@id/labelCityName"
-            app:layout_constraintTop_toTopOf="@id/labelCityName" />
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/labelCountyName"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/labelDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description:"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text_background_v1"
+                android:text="Description"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/editDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text_background_v1"
+                android:hint="Edit Description"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="County Name:"
-            android:textColor="#6200EE"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/labelCityName" />
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textCountyName"
-            android:layout_width="0dp"
+            <TextView
+                android:id="@+id/labelAddressName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address Name:"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textAddressName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text_background_v1"
+                android:text="AddressName"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/editAddressName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text_background_v1"
+                android:hint="Edit Address Name"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:text="CountyName"
-            android:textColor="#7EB6A9A9"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@id/labelCountyName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/labelCountyName"
-            app:layout_constraintTop_toTopOf="@id/labelCountyName" />
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/editCountyName"
-            android:layout_width="0dp"
+            <TextView
+                android:id="@+id/labelReceiverName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Receiver Name:"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textReceiverName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text_background_v1"
+                android:text="ReceiverName"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/editReceiverName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text_background_v1"
+                android:hint="Edit Receiver Name"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Edit County Name"
-            android:inputType="text"
-            android:textColor="#333333"
-            android:textSize="16sp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/labelCountyName"
-            app:layout_constraintEnd_toEndOf="@id/textCountyName"
-            app:layout_constraintStart_toEndOf="@id/labelCountyName"
-            app:layout_constraintTop_toTopOf="@id/labelCountyName" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/labelDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Description:"
-            android:textColor="#6200EE"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/labelCountyName" />
+            <TextView
+                android:id="@+id/labelReceiverPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Receiver Phone:"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textDescription"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:text="Description"
-            android:textColor="#7EB6A9A9"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@id/labelDescription"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/labelDescription"
-            app:layout_constraintTop_toTopOf="@id/labelDescription" />
+            <TextView
+                android:id="@+id/textReceiverPhone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text_background_v1"
+                android:text="ReceiverPhone"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/editDescription"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="Edit Description"
-            android:inputType="text"
-            android:textColor="#333333"
-            android:textSize="16sp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/labelDescription"
-            app:layout_constraintEnd_toEndOf="@id/textDescription"
-            app:layout_constraintStart_toEndOf="@id/labelDescription"
-            app:layout_constraintTop_toTopOf="@id/labelDescription" />
+            <EditText
+                android:id="@+id/editReceiverPhone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text_background_v1"
+                android:hint="Edit Receiver Phone"
+                android:inputType="phone"
+                android:textAlignment="center"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:visibility="gone" />
 
-        <TextView
-            android:id="@+id/labelAddressName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Address Name:"
-            android:textColor="#6200EE"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/labelDescription" />
-
-        <TextView
-            android:id="@+id/textAddressName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:text="AddressName"
-            android:textColor="#7EB6A9A9"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@id/labelAddressName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/labelAddressName"
-            app:layout_constraintTop_toTopOf="@id/labelAddressName" />
-
-        <EditText
-            android:id="@+id/editAddressName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="Edit Address Name"
-            android:inputType="text"
-            android:textColor="#333333"
-            android:textSize="16sp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/labelAddressName"
-            app:layout_constraintEnd_toEndOf="@id/textAddressName"
-            app:layout_constraintStart_toEndOf="@id/labelAddressName"
-            app:layout_constraintTop_toTopOf="@id/labelAddressName" />
-
-        <TextView
-            android:id="@+id/labelReceiverName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Receiver Name:"
-            android:textColor="#6200EE"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/labelAddressName" />
-
-        <TextView
-            android:id="@+id/textReceiverName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:text="ReceiverName"
-            android:textColor="#7EB6A9A9"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@id/labelReceiverName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/labelReceiverName"
-            app:layout_constraintTop_toTopOf="@id/labelReceiverName" />
-
-        <EditText
-            android:id="@+id/editReceiverName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="Edit Receiver Name"
-            android:inputType="text"
-            android:textColor="#333333"
-            android:textSize="16sp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/labelReceiverName"
-            app:layout_constraintEnd_toEndOf="@id/textReceiverName"
-            app:layout_constraintStart_toEndOf="@id/labelReceiverName"
-            app:layout_constraintTop_toTopOf="@id/labelReceiverName" />
-
-        <TextView
-            android:id="@+id/labelReceiverPhone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Receiver Phone:"
-            android:textColor="#6200EE"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/labelReceiverName" />
-
-        <TextView
-            android:id="@+id/textReceiverPhone"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:text="ReceiverPhone"
-            android:textColor="#7EB6A9A9"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@id/labelReceiverPhone"
-            app:layout_constraintEnd_toStartOf="@id/imageView4"
-            app:layout_constraintStart_toEndOf="@id/labelReceiverPhone"
-            app:layout_constraintTop_toTopOf="@id/labelReceiverPhone" />
-
-        <EditText
-            android:id="@+id/editReceiverPhone"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="Edit Receiver Phone"
-            android:inputType="phone"
-            android:textColor="#333333"
-            android:textSize="16sp"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/labelReceiverPhone"
-            app:layout_constraintEnd_toEndOf="@id/textReceiverPhone"
-            app:layout_constraintStart_toEndOf="@id/labelReceiverPhone"
-            app:layout_constraintTop_toTopOf="@id/labelReceiverPhone" />
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textReceiverPhone"
-            app:srcCompat="@drawable/baseline_save_24" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="Save Button"
+                android:src="@drawable/baseline_save_24" />
+        </LinearLayout>
+    </LinearLayout>
 </androidx.cardview.widget.CardView>

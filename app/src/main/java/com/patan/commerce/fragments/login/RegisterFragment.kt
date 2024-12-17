@@ -8,13 +8,18 @@ import androidx.navigation.fragment.findNavController
 import com.patan.commerce.R
 import com.patan.commerce.databinding.FragmentRegisterBinding
 import com.patan.commerce.fragments.BaseFragment
+import com.patan.commerce.model.RegisterRequest
 import com.patan.commerce.viewmodels.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterBinding::inflate) {
     private val viewModel by viewModels<LoginViewModel>()
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
         binding.registerButton.setOnClickListener {
             binding.apply {
@@ -26,27 +31,40 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
                 val phoneNumber: String? = phone.text?.toString()
                 val email: String? = email.text?.toString()
                 val repassword: String = rePassword.text.toString()
+
+                val userRegisterRequest =
+                    RegisterRequest(
+                        email,
+                        gender,
+                        name,
+                        password,
+                        phoneNumber,
+                        repassword,
+                        surName,
+                        userName,
+                    )
                 viewModel.register(
-                    name, userName, surName, gender, phoneNumber, email, password, repassword
+                    userRegisterRequest,
                 )
                 viewModel.success.observe(viewLifecycleOwner) { success ->
                     if (success == false) {
                         viewModel.notifications.observe(viewLifecycleOwner) {
-                            Toast.makeText(
-                                this@RegisterFragment.requireContext(),
-                                it.toString(),
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            Toast
+                                .makeText(
+                                    this@RegisterFragment.requireContext(),
+                                    it.toString(),
+                                    Toast.LENGTH_SHORT,
+                                ).show()
                         }
                     } else {
-                        Toast.makeText(
-                            this@RegisterFragment.requireContext(),
-                            getString(R.string.kayit_basarili),
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Toast
+                            .makeText(
+                                this@RegisterFragment.requireContext(),
+                                getString(R.string.kayit_basarili),
+                                Toast.LENGTH_SHORT,
+                            ).show()
                     }
                 }
-
             }
             val action = RegisterFragmentDirections.actionRegisterFragmentToConfirmEmailFragment()
             findNavController().navigate(action)

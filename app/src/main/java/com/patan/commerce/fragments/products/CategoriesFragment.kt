@@ -19,49 +19,71 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class CategoriesFragment :
-    BaseFragment<FragmentCategoriesBinding>(FragmentCategoriesBinding::inflate) {
+class CategoriesFragment : BaseFragment<FragmentCategoriesBinding>(FragmentCategoriesBinding::inflate) {
     private val viewModel by viewModels<ProductsViewModel>()
     private lateinit var categoriesAdapter: CategoryAdapter
     private lateinit var productsAdapter: ProductsAdapter
     private val args: CategoriesFragmentArgs by navArgs()
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
         val topCategoryId = args.topCategoryId
 
         viewModel.getTopCategories(topCategoryId)
         viewModel._topCategoriesList.observe(viewLifecycleOwner) {
             Log.d("CategoriesFragment", "Successful: $it")
-            categoriesAdapter = CategoryAdapter(it, object : CategoryClickListener {
-                override fun onCategoryClicked(topCategoryId: Int?) {
-                    binding.recyclerView3.isVisible = false
-                    binding.recyclerView4.isVisible = true
-                    viewModel.getTopCategories(topCategoryId)
-                    viewModel._topCategoriesList.observe(viewLifecycleOwner) { subId ->
-                        categoriesAdapter = CategoryAdapter(subId, object : CategoryClickListener {
-                            override fun onCategoryClicked(topCategoryId: Int?) {
-                                lifecycleScope.launch {
-                                    viewModel.getProductsByCategory(
-                                        topCategoryId!!, 6, 0
-                                    ).collectLatest { pagingData ->
-                                        productsAdapter =
-                                            ProductsAdapter(object : ProductsClickListener {
-                                                override fun onProductClicked(
-                                                    productId: Int?, productScoreCount: Int?
-                                                ) {
+            categoriesAdapter =
+                CategoryAdapter(
+                    it,
+                    object : CategoryClickListener {
+                        override fun onCategoryClicked(topCategoryId: Int?) {
+                            binding.recyclerView3.isVisible = false
+                            binding.recyclerView4.isVisible = true
+                            viewModel.getTopCategories(topCategoryId)
+                            viewModel._topCategoriesList.observe(viewLifecycleOwner) { subId ->
+                                categoriesAdapter =
+                                    CategoryAdapter(
+                                        subId,
+                                        object : CategoryClickListener {
+                                            override fun onCategoryClicked(topCategoryId: Int?) {
+                                                lifecycleScope.launch {
+                                                    viewModel
+                                                        .getProductsByCategory(
+                                                            topCategoryId!!,
+                                                            6,
+                                                            0,
+                                                        ).collectLatest {
+                                                            viewModel._products.observe(
+                                                                viewLifecycleOwner,
+                                                            ) { prod ->
+                                                                productsAdapter =
+                                                                    ProductsAdapter(
+                                                                        object :
+                                                                            ProductsClickListener {
+                                                                            override fun onProductClicked(
+                                                                                productId: Int?,
+                                                                                productScoreCount: Int?,
+                                                                            ) {
+                                                                                // Unnecessary part
+                                                                            }
+                                                                        },
+                                                                        prod,
+                                                                    )
+                                                            }
+                                                        }
                                                 }
-                                            })
-                                        productsAdapter.submitData(pagingData)
-                                    }
-                                }
-                                binding.recyclerView4.adapter = productsAdapter
+                                                binding.recyclerView4.adapter = productsAdapter
+                                            }
+                                        },
+                                    )
+                                binding.recyclerView4.adapter = categoriesAdapter
                             }
-                        })
-                        binding.recyclerView4.adapter = categoriesAdapter
-                    }
-
-                }
-            })
+                        }
+                    },
+                )
             binding.recyclerView3.adapter = categoriesAdapter
         }
     }
