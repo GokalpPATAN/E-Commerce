@@ -3,8 +3,6 @@
 <!-- HEADER STYLE: CLASSIC -->
 <div align="center">
 
-<img src="E-Commerce.png" width="30%" style="position: relative; top: 0; right: 0;" alt="Project Logo"/>
-
 # E-COMMERCE
 
 <em>Transform Shopping Into Seamless, Limitless Experiences</em>
